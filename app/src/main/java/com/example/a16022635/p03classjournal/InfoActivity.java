@@ -22,6 +22,7 @@ public class InfoActivity extends AppCompatActivity {
     Button btnEmail;
     ArrayAdapter aa;
     ArrayList<Info> info;
+    String module;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +38,14 @@ public class InfoActivity extends AppCompatActivity {
         Intent i = getIntent();
         String code = i.getStringExtra("code");
         getSupportActionBar().setTitle("Info for " + code);
+        module = code;
 
         if (code.equalsIgnoreCase("C347")){
             info.add(new Info(1,"B"));
             info.add(new Info(2,"C"));
             info.add(new Info(3,"A"));
-
+        } else if (code.equalsIgnoreCase("C302")) {
+            info.add(new Info(1,"E"));
         }
         aa = new InfoAdapter(this, R.layout.row, info);
         lvInfo.setAdapter(aa);
@@ -62,11 +65,20 @@ public class InfoActivity extends AppCompatActivity {
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                // Intent to display data
-                Intent rpIntent = new Intent(Intent.ACTION_VIEW);
-                // Set the URL to be used.
-                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
-                startActivity(rpIntent);
+                if(module.equalsIgnoreCase("C347")){
+                    // Intent to display data
+                    Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                    // Set the URL to be used.
+                    rpIntent.setData(Uri.parse("https://www.rp.edu.sg/schools-courses/courses/full-time-diplomas/full-time-courses/modules/index/C302"));
+                    startActivity(rpIntent);
+                } else if (module.equalsIgnoreCase("C302")){
+                    // Intent to display data
+                    Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                    // Set the URL to be used.
+                    rpIntent.setData(Uri.parse("https://www.rp.edu.sg/schools-courses/courses/full-time-diplomas/full-time-courses/modules/index/C347"));
+                    startActivity(rpIntent);
+                }
+
             }
         });
 
