@@ -1,5 +1,6 @@
 package com.example.a16022635.p03classjournal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.zip.InflaterOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
         lvModules.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String code = module.get(position);
+                Intent i = new Intent(MainActivity.this, InfoActivity.class);
+                i.putExtra("code", code);
 
+                startActivity(i);
             }
         });
 
