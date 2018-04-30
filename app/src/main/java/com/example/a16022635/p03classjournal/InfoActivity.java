@@ -33,6 +33,13 @@ public class InfoActivity extends AppCompatActivity {
         String code = i.getStringExtra("code");
         getSupportActionBar().setTitle("Info for " + code);
 
-        
+        if (code.equalsIgnoreCase("C347")){
+            info.add(new Info("B"));
+            info.add(new Info("C"));
+            info.add(new Info("A"));
+
+        }
+        aa = new InfoAdapter(this, R.layout.row, info);
+        lvInfo.setAdapter(aa);
     }
 }

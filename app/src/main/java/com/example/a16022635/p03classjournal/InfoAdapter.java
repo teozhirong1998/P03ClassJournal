@@ -36,7 +36,7 @@ public class InfoAdapter extends ArrayAdapter<Info>  {
 
         Info currentInfo = info.get(position);
 
-        tvWeek.setText(currentInfo.getWeek());
+        tvWeek.setText("Week " + (position + 1));
 
         tvGrade.setText(currentInfo.getGrade());
 
